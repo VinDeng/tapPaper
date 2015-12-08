@@ -10,9 +10,9 @@ Rule:Tap the screen as if it is a paper. You need to find out a hole covered by 
 ##主界面
 <br><br><br>
 
-![游戏画面](http://7xozwe.com1.z0.glb.clouddn.com/IMG_0093.PNG "游戏画面")
+![游戏画面](http://7xozwe.com1.z0.glb.clouddn.com/IMG_0094.PNG "游戏画面")
 ##游戏画面
 <br><br><br>
 
-![游戏结束](http://7xozwe.com1.z0.glb.clouddn.com/IMG_0093.PNG "游戏结束")
+![游戏结束](http://7xozwe.com1.z0.glb.clouddn.com/IMG_0095.PNG "游戏结束")
 ##游戏结束
