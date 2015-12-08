@@ -1,0 +1,463 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		44B155F61B6DCD1B00C9F56B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B155F51B6DCD1B00C9F56B /* main.m */; };
+		44B155F91B6DCD1B00C9F56B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B155F81B6DCD1B00C9F56B /* AppDelegate.m */; };
+		44B155FF1B6DCD1B00C9F56B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44B155FD1B6DCD1B00C9F56B /* Main.storyboard */; };
+		44B156011B6DCD1B00C9F56B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44B156001B6DCD1B00C9F56B /* Images.xcassets */; };
+		44B156041B6DCD1B00C9F56B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44B156021B6DCD1B00C9F56B /* LaunchScreen.xib */; };
+		44B156101B6DCD1B00C9F56B /* tapPaperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B1560F1B6DCD1B00C9F56B /* tapPaperTests.m */; };
+		44B1561B1B6DCDAB00C9F56B /* tapPaperMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B1561A1B6DCDAB00C9F56B /* tapPaperMain.m */; };
+		44C6412D1B73425F00476B9F /* tapPaperBeginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C6412C1B73425F00476B9F /* tapPaperBeginViewController.m */; };
+		44C641301B73428200476B9F /* tapPaperBeginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C6412F1B73428200476B9F /* tapPaperBeginView.m */; };
+		44C641331B7654FD00476B9F /* AchieveStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C641321B7654FD00476B9F /* AchieveStore.m */; };
+		44C641361B77353C00476B9F /* tapPaperAchievements.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C641351B77353C00476B9F /* tapPaperAchievements.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		44B1560A1B6DCD1B00C9F56B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 44B155E81B6DCD1B00C9F56B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 44B155EF1B6DCD1B00C9F56B;
+			remoteInfo = tapPaper;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		44B155F01B6DCD1B00C9F56B /* tapPaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tapPaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		44B155F41B6DCD1B00C9F56B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44B155F51B6DCD1B00C9F56B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		44B155F71B6DCD1B00C9F56B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		44B155F81B6DCD1B00C9F56B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		44B155FE1B6DCD1B00C9F56B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		44B156001B6DCD1B00C9F56B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		44B156031B6DCD1B00C9F56B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		44B156091B6DCD1B00C9F56B /* tapPaperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tapPaperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		44B1560E1B6DCD1B00C9F56B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44B1560F1B6DCD1B00C9F56B /* tapPaperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tapPaperTests.m; sourceTree = "<group>"; };
+		44B156191B6DCDAB00C9F56B /* tapPaperMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tapPaperMain.h; sourceTree = "<group>"; };
+		44B1561A1B6DCDAB00C9F56B /* tapPaperMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tapPaperMain.m; sourceTree = "<group>"; };
+		44C6412B1B73425F00476B9F /* tapPaperBeginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tapPaperBeginViewController.h; sourceTree = "<group>"; };
+		44C6412C1B73425F00476B9F /* tapPaperBeginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tapPaperBeginViewController.m; sourceTree = "<group>"; };
+		44C6412E1B73428200476B9F /* tapPaperBeginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tapPaperBeginView.h; sourceTree = "<group>"; };
+		44C6412F1B73428200476B9F /* tapPaperBeginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tapPaperBeginView.m; sourceTree = "<group>"; };
+		44C641311B7654FD00476B9F /* AchieveStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchieveStore.h; sourceTree = "<group>"; };
+		44C641321B7654FD00476B9F /* AchieveStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchieveStore.m; sourceTree = "<group>"; };
+		44C641341B77353C00476B9F /* tapPaperAchievements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tapPaperAchievements.h; sourceTree = "<group>"; };
+		44C641351B77353C00476B9F /* tapPaperAchievements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tapPaperAchievements.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		44B155ED1B6DCD1B00C9F56B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44B156061B6DCD1B00C9F56B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		44B155E71B6DCD1B00C9F56B = {
+			isa = PBXGroup;
+			children = (
+				44B155F21B6DCD1B00C9F56B /* tapPaper */,
+				44B1560C1B6DCD1B00C9F56B /* tapPaperTests */,
+				44B155F11B6DCD1B00C9F56B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		44B155F11B6DCD1B00C9F56B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				44B155F01B6DCD1B00C9F56B /* tapPaper.app */,
+				44B156091B6DCD1B00C9F56B /* tapPaperTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		44B155F21B6DCD1B00C9F56B /* tapPaper */ = {
+			isa = PBXGroup;
+			children = (
+				44B155F71B6DCD1B00C9F56B /* AppDelegate.h */,
+				44B155F81B6DCD1B00C9F56B /* AppDelegate.m */,
+				44C6412B1B73425F00476B9F /* tapPaperBeginViewController.h */,
+				44C641311B7654FD00476B9F /* AchieveStore.h */,
+				44C641321B7654FD00476B9F /* AchieveStore.m */,
+				44C641341B77353C00476B9F /* tapPaperAchievements.h */,
+				44C641351B77353C00476B9F /* tapPaperAchievements.m */,
+				44C6412C1B73425F00476B9F /* tapPaperBeginViewController.m */,
+				44C6412E1B73428200476B9F /* tapPaperBeginView.h */,
+				44C6412F1B73428200476B9F /* tapPaperBeginView.m */,
+				44B156191B6DCDAB00C9F56B /* tapPaperMain.h */,
+				44B1561A1B6DCDAB00C9F56B /* tapPaperMain.m */,
+				44B155FD1B6DCD1B00C9F56B /* Main.storyboard */,
+				44B156001B6DCD1B00C9F56B /* Images.xcassets */,
+				44B156021B6DCD1B00C9F56B /* LaunchScreen.xib */,
+				44B155F31B6DCD1B00C9F56B /* Supporting Files */,
+			);
+			path = tapPaper;
+			sourceTree = "<group>";
+		};
+		44B155F31B6DCD1B00C9F56B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				44B155F41B6DCD1B00C9F56B /* Info.plist */,
+				44B155F51B6DCD1B00C9F56B /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		44B1560C1B6DCD1B00C9F56B /* tapPaperTests */ = {
+			isa = PBXGroup;
+			children = (
+				44B1560F1B6DCD1B00C9F56B /* tapPaperTests.m */,
+				44B1560D1B6DCD1B00C9F56B /* Supporting Files */,
+			);
+			path = tapPaperTests;
+			sourceTree = "<group>";
+		};
+		44B1560D1B6DCD1B00C9F56B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				44B1560E1B6DCD1B00C9F56B /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		44B155EF1B6DCD1B00C9F56B /* tapPaper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 44B156131B6DCD1B00C9F56B /* Build configuration list for PBXNativeTarget "tapPaper" */;
+			buildPhases = (
+				44B155EC1B6DCD1B00C9F56B /* Sources */,
+				44B155ED1B6DCD1B00C9F56B /* Frameworks */,
+				44B155EE1B6DCD1B00C9F56B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tapPaper;
+			productName = tapPaper;
+			productReference = 44B155F01B6DCD1B00C9F56B /* tapPaper.app */;
+			productType = "com.apple.product-type.application";
+		};
+		44B156081B6DCD1B00C9F56B /* tapPaperTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 44B156161B6DCD1B00C9F56B /* Build configuration list for PBXNativeTarget "tapPaperTests" */;
+			buildPhases = (
+				44B156051B6DCD1B00C9F56B /* Sources */,
+				44B156061B6DCD1B00C9F56B /* Frameworks */,
+				44B156071B6DCD1B00C9F56B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				44B1560B1B6DCD1B00C9F56B /* PBXTargetDependency */,
+			);
+			name = tapPaperTests;
+			productName = tapPaperTests;
+			productReference = 44B156091B6DCD1B00C9F56B /* tapPaperTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		44B155E81B6DCD1B00C9F56B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = Vincent_D;
+				TargetAttributes = {
+					44B155EF1B6DCD1B00C9F56B = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					44B156081B6DCD1B00C9F56B = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 44B155EF1B6DCD1B00C9F56B;
+					};
+				};
+			};
+			buildConfigurationList = 44B155EB1B6DCD1B00C9F56B /* Build configuration list for PBXProject "tapPaper" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 44B155E71B6DCD1B00C9F56B;
+			productRefGroup = 44B155F11B6DCD1B00C9F56B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				44B155EF1B6DCD1B00C9F56B /* tapPaper */,
+				44B156081B6DCD1B00C9F56B /* tapPaperTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		44B155EE1B6DCD1B00C9F56B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44B155FF1B6DCD1B00C9F56B /* Main.storyboard in Resources */,
+				44B156041B6DCD1B00C9F56B /* LaunchScreen.xib in Resources */,
+				44B156011B6DCD1B00C9F56B /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44B156071B6DCD1B00C9F56B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		44B155EC1B6DCD1B00C9F56B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44B155F91B6DCD1B00C9F56B /* AppDelegate.m in Sources */,
+				44B155F61B6DCD1B00C9F56B /* main.m in Sources */,
+				44C641301B73428200476B9F /* tapPaperBeginView.m in Sources */,
+				44C641361B77353C00476B9F /* tapPaperAchievements.m in Sources */,
+				44C641331B7654FD00476B9F /* AchieveStore.m in Sources */,
+				44C6412D1B73425F00476B9F /* tapPaperBeginViewController.m in Sources */,
+				44B1561B1B6DCDAB00C9F56B /* tapPaperMain.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44B156051B6DCD1B00C9F56B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44B156101B6DCD1B00C9F56B /* tapPaperTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		44B1560B1B6DCD1B00C9F56B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 44B155EF1B6DCD1B00C9F56B /* tapPaper */;
+			targetProxy = 44B1560A1B6DCD1B00C9F56B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		44B155FD1B6DCD1B00C9F56B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				44B155FE1B6DCD1B00C9F56B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		44B156021B6DCD1B00C9F56B /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				44B156031B6DCD1B00C9F56B /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		44B156111B6DCD1B00C9F56B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Weixin Liao (YBGAYUB7P9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		44B156121B6DCD1B00C9F56B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Weixin Liao (YBGAYUB7P9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		44B156141B6DCD1B00C9F56B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Weixin Liao (YBGAYUB7P9)";
+				INFOPLIST_FILE = tapPaper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		44B156151B6DCD1B00C9F56B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Weixin Liao (YBGAYUB7P9)";
+				INFOPLIST_FILE = tapPaper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		44B156171B6DCD1B00C9F56B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = tapPaperTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tapPaper.app/tapPaper";
+			};
+			name = Debug;
+		};
+		44B156181B6DCD1B00C9F56B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = tapPaperTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tapPaper.app/tapPaper";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		44B155EB1B6DCD1B00C9F56B /* Build configuration list for PBXProject "tapPaper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44B156111B6DCD1B00C9F56B /* Debug */,
+				44B156121B6DCD1B00C9F56B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		44B156131B6DCD1B00C9F56B /* Build configuration list for PBXNativeTarget "tapPaper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44B156141B6DCD1B00C9F56B /* Debug */,
+				44B156151B6DCD1B00C9F56B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		44B156161B6DCD1B00C9F56B /* Build configuration list for PBXNativeTarget "tapPaperTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44B156171B6DCD1B00C9F56B /* Debug */,
+				44B156181B6DCD1B00C9F56B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 44B155E81B6DCD1B00C9F56B /* Project object */;
+}
