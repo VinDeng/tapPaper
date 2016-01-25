@@ -32,15 +32,26 @@
 
 @property (nonatomic) UIColor *buttonBackGround;
 
+@property (nonatomic)UITapGestureRecognizer *tap;
+
+@property (nonatomic)UILabel *spriteWordsLabel;
+
 - (void)addButton;
 
 - (void)addLabel;
 
 - (void)requestAchievements;
 
+- (void)addSprite;
 @end
 
 @implementation tapPaperBeginView
+
+- (instancetype)initWithFrame:(CGRect)frame andDelegate:(tapPaperBeginViewController *)bvc
+{
+    self.deligate = bvc;
+   return [self initWithFrame:frame];
+}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -52,6 +63,7 @@
         
         _viewHeight = [UIScreen mainScreen].bounds.size.height;
         _viewWidht = [UIScreen mainScreen].bounds.size.width;
+        self.spriteWordsLabel = nil;
         
         NSLog(@"%f,%f",_viewWidht,_viewHeight);
         
@@ -61,9 +73,9 @@
         
         [self addButton];
         
-//        [self requestAchievements];
-        
         [self refreshScore];
+        
+        [self addSprite];
         
     }
     return self;
@@ -134,7 +146,12 @@
     
     ////////////// 进入游戏模式入口按钮
     
-    CGRect buttonRect = CGRectMake(0, 0, _viewHeight/8, _viewWidht/8);
+    double height = _viewWidht/8;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        height /= 2;
+    }
+
+    CGRect buttonRect = CGRectMake(0, 0, _viewHeight/8, height);
     
     UIButton *singleGame = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     
@@ -209,21 +226,82 @@
 
 - (void)addLabel
 {
-    CGRect labelRect = CGRectMake(0, 0, _viewWidht/4, _viewHeight/5);
+
+    //2016.1.17 添加自适配字体
+    NSString *labelString = @"点 点";
+  
     
-    UILabel *Title = [[UILabel alloc] initWithFrame:labelRect];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     
-    Title.center = CGPointMake(_viewWidht/2, _viewHeight/2-50);
+    [label setNumberOfLines:0];
+    label.lineBreakMode = NSLineBreakByWordWrapping;
     
-    Title.text = @"点 点";
     
-    Title.textAlignment = UITextBorderStyleRoundedRect;
     
-    Title.layer.cornerRadius = 10.0;
+    label.font = [UIFont fontWithName:@"Helvetica" size:34];
+    CGSize labelMaxSize = CGSizeMake(_viewWidht/4, _viewHeight/4);
     
-    Title.font = [UIFont fontWithName:@"Helvetica" size:34];
+    NSDictionary *dic = @{NSFontAttributeName:label.font};
     
-    [self addSubview:Title];
+    CGRect labelRect = [labelString boundingRectWithSize:labelMaxSize options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingTruncatesLastVisibleLine attributes:dic context:nil];
+    
+    label.frame = CGRectMake(0, 0, labelRect.size.width, labelRect.size.height);
+    label.center = CGPointMake(_viewWidht/2, _viewHeight/2 - 50);
+    label.text = labelString;
+    label.textAlignment = UITextBorderStyleRoundedRect;
+    label.layer.cornerRadius = 10.0;
+    
+    dic = nil;
+    
+    [self addSubview:label];
+}
+
+- (void)addSprite
+{
+
+    dot *aDot = ((tapPaperBeginViewController *)self.deligate).myDot;
+    
+   UIImage *sprite = [aDot imageOfThisEmotion:peace];
+
+    _spriteView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 90, 90)];
+    _spriteView.center = CGPointMake(_viewWidht*7/9, _viewHeight/16 + 70);
+    _spriteView.image = sprite;
+    
+    _tap = [[UITapGestureRecognizer alloc]initWithTarget:self.deligate action:@selector(tapSprite)];
+    [_spriteView addGestureRecognizer:_tap];
+    _spriteView.userInteractionEnabled = YES;
+
+    [self addSubview:_spriteView];
+}
+
+
+- (void)spriteSay:(NSString *)words
+{
+    if (self.spriteWordsLabel) {
+        [self.spriteWordsLabel removeFromSuperview];
+        self.spriteWordsLabel = nil;
+    }
+    
+    self.spriteWordsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    self.spriteWordsLabel.numberOfLines = 0;
+    self.spriteWordsLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self.spriteWordsLabel.font = [UIFont fontWithName:@"Helvetica" size:14];
+    CGSize labelMaxSize = CGSizeMake(_viewWidht/2, _viewHeight/2);
+    NSDictionary *dic = @{NSFontAttributeName:self.spriteWordsLabel.font};
+    CGRect labelRect = [words boundingRectWithSize:labelMaxSize options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingTruncatesLastVisibleLine attributes:dic context:nil];
+    dic = nil;
+    self.spriteWordsLabel.frame = CGRectMake(0, 0, labelRect.size.width, labelRect.size.height);
+    
+    CGPoint centerPoint = CGPointMake(0, 0);
+    centerPoint.y = self.spriteView.center.y;
+    centerPoint.x = (self.spriteView.frame.origin.x - labelRect.size.width/2);
+    self.spriteWordsLabel.center = centerPoint;
+    
+    self.spriteWordsLabel.text = words;
+    
+    [self addSubview:self.spriteWordsLabel];
+    
+    [self setNeedsDisplay];
     
 }
 
@@ -231,7 +309,6 @@
 #pragma mark 声音开关
 - (void)changeSoundLabel
 {
-//    NSString *string = self.isPlaySound ? @"开": @"关" ;
     
     [self.soundButton setTitle:[NSString stringWithFormat:@"声音:%@",self.isPlaySound ? @"开": @"关"] forState:UIControlStateNormal];
     NSLog(@"%@" ,[NSString stringWithFormat:@"声音:%@",self.isPlaySound ? @"开": @"关"]);

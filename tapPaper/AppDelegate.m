@@ -19,10 +19,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    [application setStatusBarHidden:YES withAnimation:NO];
+    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
     tapPaperBeginViewController *beginView = [[tapPaperBeginViewController alloc] init];
 
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+    
     self.window.rootViewController = beginView; //载入初始界面
     
     self.window.backgroundColor= [UIColor whiteColor];
@@ -53,5 +57,8 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
+
 
 @end

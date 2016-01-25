@@ -9,12 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "tapPaperBeginView.h"
 #import "AchieveStore.h"
+#import "dot.h"
+@class dot;
+
 
 @interface tapPaperBeginViewController : UIViewController
-
 @property  (nonatomic) int totleTapCountNumber;
-
 @property (nonatomic) int totleWinCountumber;
+@property (nonatomic) dot *myDot;
+@property (nonatomic) BOOL isPlaySound;
 
 
 - (void)swiftSound;

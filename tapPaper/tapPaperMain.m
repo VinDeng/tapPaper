@@ -10,6 +10,15 @@
 #import "tapPaperMain.h"
 #import <UIKit/UIKit.h>
 #import "tapPaperView.h"
+#import "tapPaperBeginViewController.h"
+
+
+typedef enum {
+    so_so = 0,
+    good,
+    bad,
+    hit
+}tapDistance;
 
 #define HOLERADIUS 20 //洞的半径
 #define TIME 5
@@ -19,6 +28,8 @@
 @property (nonatomic) CGPoint holePosition;
 
 @property (nonatomic) UITapGestureRecognizer *tap;
+
+@property (nonatomic) UITapGestureRecognizer *canNotBeTap;
 
 @property (nonatomic) BOOL computerTurn;
 
@@ -41,10 +52,13 @@
 @property (nonatomic) int totleTapCount;
 
 @property (nonatomic) UILabel *tapCountLabel; //胜利次数
-
 @property (nonatomic) UILabel *totleTapCountLabel;// 总点击数
-
 @property (nonatomic) UILabel *loseLabel; //败北次数
+
+@property (nonatomic) UIImageView *spriteView;//精灵图像
+
+@property (nonatomic) SystemSoundID hitSoundId; //击中声音
+@property (nonatomic) SystemSoundID missSoundId; //未击中声音
 
 - (void)initDate; //初始化数据
 
@@ -71,7 +85,8 @@
 {
     self = [super init];
     if (self) {
-        
+        self.hitSoundId = 0;
+        self.missSoundId = 0;
     }
     return self;
 }
@@ -88,9 +103,11 @@
     
     [self initDate];  //游戏数据准备
     
-    [self addGesture]; //添加手势
-    
     [self addLabel];  //添加屏幕文字
+    
+    [self addSprite]; //添加精灵
+    
+    [self addGesture]; //添加手势
     
     [self refreshScore]; //刷新分数
     
@@ -103,6 +120,15 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+
+}
+
+
+
 #pragma mark -
 #pragma mark 准备需要用的数据
 - (void)initDate
@@ -110,6 +136,21 @@
 
     self.holePosition = [self getAPointRandomly]; //生成一个目标洞
     
+    SystemSoundID temp = 0;
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"player_hit" ofType:@"wav"];
+    NSURL *url = [NSURL fileURLWithPath:path];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef _Nonnull)(url), &temp);
+    self.hitSoundId = temp;
+    
+    temp = 0;
+    
+    path = [[NSBundle mainBundle] pathForResource:@"player_miss" ofType:@"wav"];
+    url = [NSURL fileURLWithPath:path];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef _Nonnull)(url), &temp);
+    self.missSoundId = temp;
+    
+    temp = 0;
 }
 
 #pragma mark -
@@ -121,6 +162,10 @@
         [self.view removeGestureRecognizer:self.tap];
         self.tap = nil;
     }
+    
+    if (self.canNotBeTap) {
+        [self.spriteView removeGestureRecognizer:self.canNotBeTap];
+    }
 }
 
 #pragma mark -
@@ -130,7 +175,11 @@
 {
     self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapPaper:)]; //点击触发方法
     
+    self.canNotBeTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:nil];
+    
     [self.view addGestureRecognizer:self.tap];
+    
+    [self.spriteView addGestureRecognizer:self.canNotBeTap];
     
     self.view.userInteractionEnabled = YES; //开启交互
 }
@@ -237,12 +286,12 @@
     }else{ // 距离大于判定距离
 //        NSLog(@"没捅破"); 调试代码
         
-        if (_isSingleGame) {  //双人游戏
-                    _computerTurn = ! _computerTurn; //跳过电脑回合
+        if (_isSingleGame) {  //单人模式
+                    _computerTurn = ! _computerTurn; //轮到电脑回合
         }
 
         
-        if (_isSingleGame && _computerTurn) { //单人游戏而且处在电脑回合
+        if (_isSingleGame && _computerTurn) { //单人模式而且处在电脑回合
             
             [self computerTurn:_holePosition andPlayerDistent:distent inHardMode:self.isHardMode]; //电脑判定方法
 
@@ -251,8 +300,6 @@
         return;
         
     }
-    
-    
 }
 
 - (int)distentBetweenPointOne:(CGPoint) point1 andPointTwo:(CGPoint) point2
@@ -270,12 +317,13 @@
                ^{
                    [self.view setBackgroundColor:[UIColor greenColor]];
                    [self.view setBackgroundColor:[UIColor whiteColor]];
-                   [self removeGesture];
+                   
                } completion:^(BOOL finished) {
                     //将点击的点显示到屏幕上
-            [self drawCicleInPoint:point];
+           // [self drawCicleInPoint:point];
                                 }];
-            [self addGesture];
+            [self drawCicleInPoint:point];
+           
     
         }
 
@@ -287,8 +335,9 @@
                  [self.view setBackgroundColor:[UIColor yellowColor]];
                  [self.view setBackgroundColor:[UIColor whiteColor]];
              } completion:^(BOOL finished) {
-                 [self drawCicleInPoint:point];
+                 //[self drawCicleInPoint:point];
              }];
+            [self drawCicleInPoint:point];
         }
             break;
         case 2: //距离一般
@@ -298,8 +347,9 @@
                  [self.view setBackgroundColor:[UIColor orangeColor]];
                  [self.view setBackgroundColor:[UIColor whiteColor]];
              } completion:^(BOOL finished) {
-             [self drawCicleInPoint:point];
+            // [self drawCicleInPoint:point];
              }];
+            [self drawCicleInPoint:point];
         }
             break;
         default: //距离很远
@@ -309,8 +359,9 @@
                  [self.view setBackgroundColor:[UIColor redColor]];
                  [self.view setBackgroundColor:[UIColor whiteColor]];
              } completion:^(BOOL finished) {
-             [self drawCicleInPoint:point];
+             //[self drawCicleInPoint:point];
              }];
+            [self drawCicleInPoint:point];
         }
 
             break;
@@ -348,12 +399,12 @@
     NSLog(@"computer's distent is %d \n player's distent is %d",[self distentBetweenPointOne:computerTurnPoint andPointTwo:self.holePosition],distent);
     
     if (self.isHardMode) {  //是否困难模式
-        
+        //电脑额外获得一个回合
         [self drawCicleInPoint:(distant2 < distant1 ? computerTurnPoint : anotherComputerTurnPoint)];
         
         [self tapPaper: (distant2 > distant1 ? computerTurnPoint : anotherComputerTurnPoint) ];
         
-        //电脑额外获得一个回合
+        
     }else{
     
     [self tapPaper:computerTurnPoint]; //电脑点击回合
@@ -371,11 +422,51 @@
     
     switch (distent/70) //按距离确定颜色
     {
-        case 0: color = [UIColor greenColor]; break;
-        case 1: color = [UIColor yellowColor]; break;
-        case 2: color = [UIColor orangeColor]; break;
-        default: color = [UIColor redColor]; break;
-       
+        case 0: color = [UIColor greenColor];
+        {
+            if (self.computerTurn) {
+                [self spriteAct:good];
+            }else{
+                [self playerActInDistance:good];
+            }
+
+            break;
+        }
+        case 1: color = [UIColor yellowColor];
+        {
+            if (self.computerTurn) {
+                [self spriteAct:so_so];
+            }else{
+                [self playerActInDistance:so_so];
+            }
+            
+            break;
+        }
+
+  
+        case 2: color = [UIColor orangeColor];
+            
+        {
+            if (self.computerTurn) {
+                [self spriteAct:so_so];
+            }else{
+                [self playerActInDistance:so_so];
+            }
+            
+            break;
+        }
+
+        default:color = [UIColor redColor];
+            
+        {
+            if (self.computerTurn) {
+                [self spriteAct:bad];
+            }else{
+                [self playerActInDistance:bad];
+            }
+            
+            break;
+        }
     }
     
     UIImageView *img = [[UIImageView alloc] initWithFrame:self.view.bounds];
@@ -413,13 +504,13 @@
     
     int  y = arc4random()%height - 70;
     
-
     
-    while (x <= 50) {
+    
+    while (x <= 50 || x <= self.spriteView.bounds.size.width) {
         x = arc4random()%width - 50;
     }
     
-    while (y <= 70) {  //
+    while (y <= 70 || y <= self.spriteView.bounds.size.height) {  //
         y = arc4random()%height - 70;
     }
     
@@ -443,18 +534,18 @@
     
     [achieveStore saveChange]; //归档存储
     
+    [self removeGesture];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark -
-#pragma mark 计时方法1
+#pragma mark 计时方法
 - (void)timeStart
 {
      self.timer = [NSTimer scheduledTimerWithTimeInterval:_stepTime target:self selector:@selector(coolDownCount) userInfo:nil repeats:YES];
 }
 
-#pragma mark -
-#pragma mark 计时方法2
 - (void)coolDownCount
 {
     _coolTime = _coolTime - _stepTime;
@@ -507,7 +598,7 @@
 #pragma mark 添加屏幕元素
 - (void)addLabel //点击数
 {
-    CGRect labelRect = CGRectMake(0, 0, 20, 65);
+    CGRect labelRect = CGRectMake(0, 0, 30, 65);
     
     _tapCountLabel = [[UILabel alloc] initWithFrame:labelRect];
     
@@ -524,6 +615,43 @@
     [self.view addSubview:_totleTapCountLabel];
     
     [self.view addSubview:_tapCountLabel];
+}
+
+- (void)addSprite
+{
+    self.spriteView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 20, 90, 90)];
+    self.spriteView.image = [((tapPaperBeginViewController*)self.deligate).myDot imageOfThisEmotion:peace];
+    
+    self.spriteView.userInteractionEnabled = YES;
+    [self.view addSubview:self.spriteView];
+}
+
+
+- (void)playerActInDistance:(tapDistance)distance
+{
+    if (!((tapPaperBeginViewController *)self.deligate).isPlaySound) {
+        return;
+    }
+    
+    if (distance == hit) {
+        AudioServicesPlaySystemSound(self.hitSoundId);
+    }else{
+        AudioServicesPlaySystemSound(self.missSoundId);
+    }
+}
+
+- (void)spriteAct:(tapDistance)distance
+{
+
+
+    self.spriteView.image = [((tapPaperBeginViewController *)self.deligate).myDot imageOfThisEmotion:distance];
+    
+//    if (((tapPaperBeginViewController *)self.deligate).isPlaySound) {
+        [((tapPaperBeginViewController *)self.deligate).myDot saySomeThingInThisEmotion:distance];
+//    }
+    
+
+
 }
 
 #pragma mark -

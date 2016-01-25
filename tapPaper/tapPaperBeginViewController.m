@@ -10,11 +10,17 @@
 #import "tapPaperAchievements.h"
 #import "tapPaperBeginViewController.h"
 #import "tapPaperMain.h"
+#import "bigDot.h"
+#import "smallDot.h"
+#import "blackDot.h"
+
+
 
 @interface tapPaperBeginViewController ()
 
-@property (nonatomic) BOOL isPlaySound;
+
 @property (nonatomic) tapPaperBeginView *beginView;
+
 
 @end
 
@@ -25,11 +31,18 @@
     self = [super init];
     
     if (self) {
-       self.beginView = [[tapPaperBeginView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+
+        self.isPlaySound = YES;
+        
+        [self creatSprite];
+
+        self.beginView = [[tapPaperBeginView alloc] initWithFrame:[UIScreen mainScreen].bounds andDelegate:self];
         
         _beginView.isPlaySound = self.isPlaySound;
 
         _beginView.deligate = self;
+        
+        
         
         self.view = self.beginView;
         
@@ -58,8 +71,46 @@
     
     [self loadAchiView];
     
+
     
 }
+
+#pragma mark-
+#pragma mark创造精灵
+- (void)creatSprite
+{
+    NSInteger randomNum = arc4random()%100;
+//    NSInteger randomNum = 95;
+
+    BOOL isBlackDot = randomNum >= 95;
+    BOOL isBigDot = ( (randomNum < 95) && (randomNum >= 80) );
+    
+    if (isBlackDot) {
+        self.myDot = [[blackDot alloc] init];
+    }else if (isBigDot){
+        self.myDot = [[bigDot alloc] init];
+    }else{
+        self.myDot = [[smallDot alloc]init];
+    }
+    
+    self.myDot.delegate = self;
+    
+    return;
+}
+
+- (void)tapSprite
+{
+   NSInteger aEmotion = arc4random()%3;
+    
+   self.beginView.spriteView.image = [self.myDot dotViewImages][aEmotion];
+   NSString *words = [self.myDot saySomeThingInThisEmotion:aEmotion];
+    
+   [self.beginView spriteSay:words];
+}
+
+#pragma mark-
+#pragma mark读取成就数据
+
 
 - (void)loadAchiView
 {
@@ -78,6 +129,9 @@
     [self.view setNeedsDisplay];
     
 }
+
+#pragma mark-
+#pragma mark进入游戏方法
 
 - (void)loadSingleGame
 {
@@ -139,6 +193,29 @@
     hardGame.deligate = self;
     
     [self presentViewController:hardGame animated:YES completion:nil];
+}
+
+#pragma mark-
+#pragma mark禁止横屏
+-(BOOL)shouldAutorotate
+{
+//    NSLog(@"use SA");
+    return NO;
+    
+}
+
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+//    NSLog(@"use SIFO");
+     return UIInterfaceOrientationMaskPortrait;
+    
+}
+
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+
+//    NSLog(@"SATIO");
+    return (toInterfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 @end
