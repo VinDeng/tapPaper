@@ -7,7 +7,7 @@
 //
 
 #import "AchieveStore.h"
-#import "tapPaperMain.h"
+#import "TapPaperMain.h"
 #import <UIKit/UIKit.h>
 #import "tapPaperView.h"
 #import "tapPaperBeginViewController.h"
@@ -23,13 +23,13 @@ typedef enum {
 #define HOLERADIUS 20 //洞的半径
 #define TIME 5
 
-@interface tapPaperMain ()
+@interface TapPaperMain ()
 
 @property (nonatomic) CGPoint holePosition;
 
 @property (nonatomic) UITapGestureRecognizer *tap;
 
-@property (nonatomic) UITapGestureRecognizer *canNotBeTap;
+//@property (nonatomic) UITapGestureRecognizer Tap;
 
 @property (nonatomic) BOOL computerTurn;
 
@@ -60,6 +60,8 @@ typedef enum {
 @property (nonatomic) SystemSoundID hitSoundId; //击中声音
 @property (nonatomic) SystemSoundID missSoundId; //未击中声音
 
+@property (nonatomic) UITapGestureRecognizer *tapSprite; //点击精灵手势
+
 - (void)initDate; //初始化数据
 
 - (void)addGesture; //添加手势
@@ -79,7 +81,7 @@ typedef enum {
 - (void)exit;
 @end
 
-@implementation tapPaperMain
+@implementation TapPaperMain
 
 - (instancetype)init
 {
@@ -163,9 +165,10 @@ typedef enum {
         self.tap = nil;
     }
     
-    if (self.canNotBeTap) {
-        [self.spriteView removeGestureRecognizer:self.canNotBeTap];
+    if (self.tapSprite) {
+        [self.spriteView removeGestureRecognizer:self.tapSprite];
     }
+
 }
 
 #pragma mark -
@@ -175,11 +178,13 @@ typedef enum {
 {
     self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapPaper:)]; //点击触发方法
     
-    self.canNotBeTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:nil];
+//    self.canNotBeTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:nil];
+    
+    self.tapSprite = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapSpriteView)];
     
     [self.view addGestureRecognizer:self.tap];
     
-    [self.spriteView addGestureRecognizer:self.canNotBeTap];
+    [self.spriteView addGestureRecognizer:self.tapSprite];
     
     self.view.userInteractionEnabled = YES; //开启交互
 }
@@ -256,11 +261,21 @@ typedef enum {
 #pragma mark 游戏结束弹窗
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    if (alertView.tag == 101) {
+        
+    
     //    NSLog(@"%ld",buttonIndex);
-    if (buttonIndex == 1) {
-        [self restartGame];
-    } else if (buttonIndex == 0) {
-        [self exit];
+        if (buttonIndex == 1) {
+            [self restartGame];
+        } else if (buttonIndex == 0) {
+            [self exit];
+        }
+    }else if (alertView.tag == 102){
+        if (buttonIndex == 0) {
+            //do nothing
+        }else if (buttonIndex == 1){
+           [self exit];
+        }
     }
 }
 
@@ -620,16 +635,24 @@ typedef enum {
 - (void)addSprite
 {
     self.spriteView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 20, 90, 90)];
-    self.spriteView.image = [((tapPaperBeginViewController*)self.deligate).myDot imageOfThisEmotion:peace];
+    self.spriteView.image = [((TapPaperBeginViewController*)self.deligate).myDot imageOfThisEmotion:peace];
     
     self.spriteView.userInteractionEnabled = YES;
+    
     [self.view addSubview:self.spriteView];
 }
 
+- (void)tapSpriteView
+{
+    NSString *str = @"要退出游戏吗？";
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"" message:str delegate:self cancelButtonTitle:@"不是" otherButtonTitles:@"退出游戏", nil];
+    alertView.tag = 102;
+    [alertView show];
+}
 
 - (void)playerActInDistance:(tapDistance)distance
 {
-    if (!((tapPaperBeginViewController *)self.deligate).isPlaySound) {
+    if (!((TapPaperBeginViewController *)self.deligate).isPlaySound) {
         return;
     }
     
@@ -644,10 +667,10 @@ typedef enum {
 {
 
 
-    self.spriteView.image = [((tapPaperBeginViewController *)self.deligate).myDot imageOfThisEmotion:distance];
+    self.spriteView.image = [((TapPaperBeginViewController *)self.deligate).myDot imageOfThisEmotion:distance];
     
 //    if (((tapPaperBeginViewController *)self.deligate).isPlaySound) {
-        [((tapPaperBeginViewController *)self.deligate).myDot saySomeThingInThisEmotion:distance];
+        [((TapPaperBeginViewController *)self.deligate).myDot saySomeThingInThisEmotion:distance];
 //    }
     
 

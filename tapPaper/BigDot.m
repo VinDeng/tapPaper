@@ -7,9 +7,9 @@
 //  Copyright © 2016年 Vincent_D. All rights reserved.
 //
 
-#import "bigDot.h"
+#import "BigDot.h"
 
-@implementation bigDot
+@implementation BigDot
 
 - (instancetype)init
 {

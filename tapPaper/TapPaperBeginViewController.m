@@ -16,15 +16,15 @@
 
 
 
-@interface tapPaperBeginViewController ()
+@interface TapPaperBeginViewController ()
 
 
-@property (nonatomic) tapPaperBeginView *beginView;
+@property (nonatomic) TapPaperBeginView *beginView;
 
 
 @end
 
-@implementation tapPaperBeginViewController
+@implementation TapPaperBeginViewController
 
 - (instancetype) init
 {
@@ -36,7 +36,7 @@
         
         [self creatSprite];
 
-        self.beginView = [[tapPaperBeginView alloc] initWithFrame:[UIScreen mainScreen].bounds andDelegate:self];
+        self.beginView = [[TapPaperBeginView alloc] initWithFrame:[UIScreen mainScreen].bounds andDelegate:self];
         
         _beginView.isPlaySound = self.isPlaySound;
 
@@ -86,11 +86,12 @@
     BOOL isBigDot = ( (randomNum < 95) && (randomNum >= 80) );
     
     if (isBlackDot) {
-        self.myDot = [[blackDot alloc] init];
+        self.myDot = [[BlackDot
+                       alloc] init];
     }else if (isBigDot){
-        self.myDot = [[bigDot alloc] init];
+        self.myDot = [[BigDot alloc] init];
     }else{
-        self.myDot = [[smallDot alloc]init];
+        self.myDot = [[SmallDot alloc]init];
     }
     
     self.myDot.delegate = self;
@@ -114,7 +115,7 @@
 
 - (void)loadAchiView
 {
-    tapPaperAchievements *achievement = [[AchieveStore shareDate] achievement];
+    TapPaperAchievements *achievement = [[AchieveStore shareDate] achievement];
     
     _totleTapCountNumber = achievement.totleTapCountNumber;
     
@@ -135,7 +136,7 @@
 
 - (void)loadSingleGame
 {
-    tapPaperMain *singleGame = [[tapPaperMain alloc] init];
+    TapPaperMain *singleGame = [[TapPaperMain alloc] init];
     
     singleGame.isPlaySound = self.isPlaySound;
     
@@ -150,7 +151,7 @@
 
 - (void)loadBattleGame
 {
-    tapPaperMain *BattleGame = [[tapPaperMain alloc] init];
+    TapPaperMain *BattleGame = [[TapPaperMain alloc] init];
     
     BattleGame.isPlaySound = self.isPlaySound;
     
@@ -165,7 +166,7 @@
 
 - (void)loadTimeGame
 {
-    tapPaperMain *timeGame = [[tapPaperMain alloc] init];
+    TapPaperMain *timeGame = [[TapPaperMain alloc] init];
     
     timeGame .isPlaySound = self.isPlaySound;
     
@@ -182,7 +183,7 @@
 
 - (void)loadHardGame
 {
-    tapPaperMain *hardGame = [[tapPaperMain alloc] init];
+    TapPaperMain *hardGame = [[TapPaperMain alloc] init];
     
     hardGame.isPlaySound = self.isPlaySound;
     
@@ -193,6 +194,13 @@
     hardGame.deligate = self;
     
     [self presentViewController:hardGame animated:YES completion:nil];
+}
+
+- (void)loadAdView
+{
+    AdViewController *adv = [[AdViewController alloc] init];
+    adv.myDot = self.myDot;
+    [self presentViewController:adv animated:YES completion:nil];
 }
 
 #pragma mark-

@@ -6,8 +6,8 @@
 //  Copyright © 2016年 Vincent_D. All rights reserved.
 //
 
-#import "dot.h"
+#import "Dot.h"
 
-@interface smallDot : dot
+@interface SmallDot : Dot
 
 @end

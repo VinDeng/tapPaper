@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <AudioToolbox/AudioToolbox.h>
-#import "tapPaperBeginViewController.h"
+#import "TapPaperBeginViewController.h"
 
 typedef enum
 {
@@ -19,7 +19,7 @@ typedef enum
     
 }emotion;
 
-@protocol dotDelegate <NSObject>
+@protocol DotDelegate <NSObject>
 @required
 
 - (void)setupCache;
@@ -28,7 +28,7 @@ typedef enum
 
 @end
 
-@interface dot : NSObject <dotDelegate>
+@interface Dot : NSObject <DotDelegate>
 
 
 

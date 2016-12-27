@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "tapPaperBeginViewController.h"
-@class tapPaperBeginViewController;
+#import "TapPaperBeginViewController.h"
 
-@interface tapPaperBeginView : UIView
+@class TapPaperBeginViewController;
+
+@interface TapPaperBeginView : UIView
 
 @property (nonatomic, weak) id  deligate;
 
@@ -18,7 +19,7 @@
 @property (nonatomic) UIImageView *spriteView;
 
 
-- (instancetype)initWithFrame:(CGRect)frame andDelegate:(tapPaperBeginViewController *)bvc;
+- (instancetype)initWithFrame:(CGRect)frame andDelegate:(TapPaperBeginViewController *)bvc;
 
 - (void)changeSoundLabel;  //开关声音方法
 

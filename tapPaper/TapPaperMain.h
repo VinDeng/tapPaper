@@ -10,7 +10,7 @@
 
 
 
-@interface tapPaperMain : UIViewController
+@interface TapPaperMain : UIViewController
 
 @property (nonatomic) BOOL isPlaySound;
 

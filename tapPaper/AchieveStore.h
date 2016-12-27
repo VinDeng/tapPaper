@@ -8,7 +8,7 @@
 
 
 #import <UIKit/UIKit.h>
-#import "tapPaperAchievements.h"
+#import "TapPaperAchievements.h"
 
 typedef enum achimentTypes  //成就类型
 {   peopleWinNumber = 0,
@@ -24,9 +24,9 @@ typedef enum achimentTypes  //成就类型
 
 + (instancetype)shareDate;
 
-@property (nonatomic) tapPaperAchievements *achievement;
+@property (nonatomic) TapPaperAchievements *achievement;
 
-- (tapPaperAchievements *)achievement;
+- (TapPaperAchievements *)achievement;
 
 - (void)saveChange;
 

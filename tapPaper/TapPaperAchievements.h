@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface tapPaperAchievements : NSObject <NSCoding>
+@interface TapPaperAchievements : NSObject <NSCoding>
 
 @property  (nonatomic) int totleTapCountNumber; //总点击数
 

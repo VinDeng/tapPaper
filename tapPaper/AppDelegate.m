@@ -23,9 +23,7 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
-    tapPaperBeginViewController *beginView = [[tapPaperBeginViewController alloc] init];
-
-        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+    TapPaperBeginViewController *beginView = [[TapPaperBeginViewController alloc] init];
     
     self.window.rootViewController = beginView; //载入初始界面
     

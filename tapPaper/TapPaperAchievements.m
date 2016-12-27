@@ -8,7 +8,7 @@
 
 #import "tapPaperAchievements.h"
 
-@implementation tapPaperAchievements
+@implementation TapPaperAchievements
 
 #pragma mark -
 #pragma mark 归档代理方法实现

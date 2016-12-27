@@ -35,7 +35,7 @@
         
         _achievement = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
         if (!_achievement) {
-            _achievement = [[tapPaperAchievements alloc] init];
+            _achievement = [[TapPaperAchievements alloc] init];
         }
     }
     
@@ -59,10 +59,10 @@
     NSArray *doucumentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     
     NSString *documentDirectory = [doucumentDirectories firstObject];//获取根目录
-    return [documentDirectory stringByAppendingPathComponent:@"item.archive"];
+    return [documentDirectory stringByAppendingPathComponent:@"dot.archive"];
 }
 
-- (tapPaperAchievements *)achievements
+- (TapPaperAchievements *)achievements
 {
     return self.achievement;
 }

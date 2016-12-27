@@ -7,16 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "tapPaperBeginView.h"
+#import "TapPaperBeginView.h"
 #import "AchieveStore.h"
 #import "dot.h"
-@class dot;
+#import "AdViewController.h"
+
+@class Dot;
 
 
-@interface tapPaperBeginViewController : UIViewController
+@interface TapPaperBeginViewController : UIViewController
 @property  (nonatomic) int totleTapCountNumber;
 @property (nonatomic) int totleWinCountumber;
-@property (nonatomic) dot *myDot;
+@property (nonatomic) Dot *myDot;
 @property (nonatomic) BOOL isPlaySound;
 
 
@@ -32,4 +34,5 @@
 
 - (void)loadHardGame;
 
+- (void)loadAdView;
 @end

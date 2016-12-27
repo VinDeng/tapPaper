@@ -7,9 +7,9 @@
 //  Copyright © 2016年 Vincent_D. All rights reserved.
 //
 
-#import "blackDot.h"
+#import "BlackDot.h"
 
-@implementation blackDot
+@implementation BlackDot
 
 - (instancetype)init
 {

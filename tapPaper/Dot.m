@@ -6,40 +6,22 @@
 //  Copyright © 2016年 Vincent_D. All rights reserved.
 //
 
-#import "dot.h"
+#import "Dot.h"
 
-@interface dot ()
-
-
-
-//@property (nonatomic ,weak)NSObject <dotDelegate> *delegate;
+@interface Dot ()
 
 @end
 
-@implementation dot
-
-
+@implementation Dot
 
 - (void)setupCache
 {
     [self doesNotRecognizeSelector:_cmd];
 }
 
-//- (NSString *)saySomeThingInThisEmotion:(emotion)aEmotion
-//{
-//    [self doesNotRecognizeSelector:_cmd];
-//    return nil;
-//}
-//
-//- (UIImage *)imageOfThisEmotion:(emotion)aEmotion
-//{
-//    [self doesNotRecognizeSelector:_cmd];
-//    return nil;
-//}
-
 - (NSString *)saySomeThingInThisEmotion:(emotion)aEmotion
 {
-    if ( ((tapPaperBeginViewController *)self.delegate).isPlaySound ) {
+    if ( ((TapPaperBeginViewController *)self.delegate).isPlaySound ) {
         
     
         switch (aEmotion) {

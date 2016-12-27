@@ -10,9 +10,9 @@
 #define kUB_Blue 199/255.0
 
 #import <UIKit/UIKit.h>
-#import "tapPaperBeginView.h"
+#import "TapPaperBeginView.h"
 
-@interface tapPaperBeginView ()
+@interface TapPaperBeginView ()
 
 @property (nonatomic) CGFloat viewHeight;
 
@@ -45,9 +45,9 @@
 - (void)addSprite;
 @end
 
-@implementation tapPaperBeginView
+@implementation TapPaperBeginView
 
-- (instancetype)initWithFrame:(CGRect)frame andDelegate:(tapPaperBeginViewController *)bvc
+- (instancetype)initWithFrame:(CGRect)frame andDelegate:(TapPaperBeginViewController *)bvc
 {
     self.deligate = bvc;
    return [self initWithFrame:frame];
@@ -105,21 +105,21 @@
     [self addSubview:self.soundButton];
     
     /////////////// 成就页面入口按钮
-    self.achievementButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-
-    self.achievementButton.frame = ButtonlRect;
-    
-    self.achievementButton.layer.cornerRadius = 10.0;
-    
-    self.achievementButton.center = CGPointMake(_viewWidht*6/9, _viewHeight/16);
-    
-    self.achievementButton.backgroundColor = self.buttonBackGround;
-    
-    [self.achievementButton setTitle:@"成就" forState:UIControlStateNormal];
-    
-    [self.achievementButton addTarget:self.deligate action:@selector(loadAchiView) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self addSubview:self.achievementButton];
+//    self.achievementButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//
+//    self.achievementButton.frame = ButtonlRect;
+//    
+//    self.achievementButton.layer.cornerRadius = 10.0;
+//    
+//    self.achievementButton.center = CGPointMake(_viewWidht*6/9, _viewHeight/16);
+//    
+//    self.achievementButton.backgroundColor = self.buttonBackGround;
+//    
+//    [self.achievementButton setTitle:@"成就" forState:UIControlStateNormal];
+//    
+//    [self.achievementButton addTarget:self.deligate action:@selector(loadAchiView) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    [self addSubview:self.achievementButton];
 
     
     ////////////// 左上角统计数据
@@ -144,12 +144,36 @@
     
     [self addSubview:self.totleWinCountLabel];
     
-    ////////////// 进入游戏模式入口按钮
+    
+    ////////////// BUG FIXING CODE
+    
     
     double height = _viewWidht/8;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         height /= 2;
     }
+    ///////////////// 广告入口
+    CGRect adButtonRect = CGRectMake(0, 0, _viewHeight/8, height);
+    
+    UIButton *adButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    
+    adButton.layer.cornerRadius = 10;
+    
+    [adButton setTitle:@"日行一善" forState:UIControlStateNormal];
+    
+    [adButton addTarget:self.deligate action:@selector(loadAdView) forControlEvents:UIControlEventTouchUpInside];
+
+    adButton.frame = adButtonRect;
+    
+    adButton.center = CGPointMake(_viewWidht/2, (_viewHeight/2 + _viewHeight*5/8 + _viewWidht/4)/2 );
+    
+    adButton.backgroundColor = self.buttonBackGround;
+    
+    [self addSubview:adButton];
+    
+    ////////////// 进入游戏模式入口按钮
+    
+
 
     CGRect buttonRect = CGRectMake(0, 0, _viewHeight/8, height);
     
@@ -194,7 +218,7 @@
     
     timeGame.frame = buttonRect;
     
-    timeGame.center = CGPointMake(_viewWidht*3/8, _viewHeight*7/8);
+    timeGame.center = CGPointMake(_viewWidht*3/8, _viewHeight*7/8 + 5);
     
     timeGame.backgroundColor = self.buttonBackGround;
     
@@ -211,7 +235,7 @@
     
     hardGame.frame = buttonRect;
     
-    hardGame.center = CGPointMake(_viewWidht*5/8, _viewHeight*7/8);
+    hardGame.center = CGPointMake(_viewWidht*5/8, _viewHeight*7/8 + 5);
     
     hardGame.backgroundColor = self.buttonBackGround;
     
@@ -238,8 +262,8 @@
     
     
     
-    label.font = [UIFont fontWithName:@"Helvetica" size:34];
-    CGSize labelMaxSize = CGSizeMake(_viewWidht/4, _viewHeight/4);
+    label.font = [UIFont fontWithName:@"Helvetica" size:38];
+    CGSize labelMaxSize = CGSizeMake(_viewWidht/2, _viewHeight/2);
     
     NSDictionary *dic = @{NSFontAttributeName:label.font};
     
@@ -259,7 +283,7 @@
 - (void)addSprite
 {
 
-    dot *aDot = ((tapPaperBeginViewController *)self.deligate).myDot;
+    Dot *aDot = ((TapPaperBeginViewController *)self.deligate).myDot;
     
    UIImage *sprite = [aDot imageOfThisEmotion:peace];
 

@@ -7,9 +7,9 @@
 //  Copyright © 2016年 Vincent_D. All rights reserved.
 //
 
-#import "smallDot.h"
+#import "SmallDot.h"
 
-@implementation smallDot
+@implementation SmallDot
 
 - (instancetype)init
 {
